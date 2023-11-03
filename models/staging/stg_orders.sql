@@ -16,9 +16,13 @@ select
         p.productid,
         p.category,
         p.productname,
-        p.subcategory
+        p.subcategory,
+    -- calling the markup file which is created in macros by adding arguments
+        {{ markup('ordersellingprice', 'ordercostprice') }} as markup
 from {{ ref('raw_orders') }} as o
     left join {{ ref('raw_customer') }} as c
         on o.customerid = c.customerid
     left join {{ ref('raw_product') }} as p
         on o.productid = p.productid
+-- calling the macro at the end, because it is a where statement
+{{limit_data_in_dev('orderdate')}}
