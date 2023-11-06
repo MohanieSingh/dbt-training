@@ -38,7 +38,11 @@ models:
   # Applies to all files under models/example/
     raw:
       +materialized: table
+    marts:
+      core:
+        +materialized: table
     staging:
       +materialized: view
     reporting:
       +materialized: table
+
