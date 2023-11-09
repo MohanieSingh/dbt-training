@@ -5,7 +5,7 @@
 
     payment as
     (
-        select * from {{ ref('stg_payments') }}
+        select * from {{ ref('stg_payment') }}
     ),
 
     order_payment as
